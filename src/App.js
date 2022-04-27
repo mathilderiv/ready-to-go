@@ -2,8 +2,9 @@ import "./App.css";
 import { useState } from "react";
 
 function App() {
-  const [active, setActive] = useState(0);
-  const [noway, setNoway] = useState(0);
+  const [active1, setActive1] = useState(false);
+  const [active2, setActive2] = useState(false);
+  const [active3, setActive3] = useState(false);
 
   return (
     <div className="App">
@@ -14,34 +15,40 @@ function App() {
       <div className="all-buttons">
         <div className="button1">
           <button
-            // style={{ backgroundColor: active ? "#5C48D3" : "grey"  }}
+            style={{
+              backgroundColor: active1 === false ? "#5C48D3" : "grey",
+            }}
             onClick={() => {
-              setActive();
+              setActive1(false);
             }}
           >
             OFF
           </button>
 
           <button
+            style={{ backgroundColor: active1 === false ? "grey" : "#5C48D3" }}
             onClick={() => {
-              setActive();
+              setActive1(true);
             }}
           >
             ON
           </button>
         </div>
+
         <div className="button2">
           <button
+            style={{ backgroundColor: active2 === false ? "#5C48D3" : "grey" }}
             onClick={() => {
-              setActive();
+              setActive2(false);
             }}
           >
             OFF
           </button>
 
           <button
+            style={{ backgroundColor: active2 === false ? "grey" : "#5C48D3" }}
             onClick={() => {
-              setActive();
+              setActive2(true);
             }}
           >
             ON
@@ -50,16 +57,18 @@ function App() {
 
         <div className="button3">
           <button
+            style={{ backgroundColor: active3 === false ? "#5C48D3" : "grey" }}
             onClick={() => {
-              setActive();
+              setActive3(false);
             }}
           >
             OFF
           </button>
 
           <button
+            style={{ backgroundColor: active3 === false ? "grey" : "#5C48D3" }}
             onClick={() => {
-              setActive();
+              setActive3(true);
             }}
           >
             ON
@@ -68,12 +77,22 @@ function App() {
       </div>
 
       <div className="Noway">
+        {active1 && active2 && active3 === true ? (
+          <span style={{ backgroundColor: "green" }}> GO !</span>
+        ) : (
+          <span style={{ backgroundColor: "red" }}> NO WAY !</span>
+        )}
+      </div>
+
+      <div className="allButtonOnOff">
         <button
           onClick={() => {
-            setNoway();
+            setActive1(false);
+            setActive2(false);
+            setActive3(false);
           }}
         >
-          No way !
+          Reset
         </button>
       </div>
     </div>
